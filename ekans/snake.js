@@ -27,14 +27,16 @@ var snake = {
     },
 
     set_dir: function(dir) {
-        if (dir === "UP") {
+        if (dir === "UP" && this.current_dir !== "DOWN") {
             this.set_speed(0, -this.default_speed);
-        } else if (dir === "DOWN") {
+        } else if (dir === "DOWN" && this.current_dir !== "UP") {
             this.set_speed(0, this.default_speed);
-        } else if (dir === "RIGHT") {
+        } else if (dir === "RIGHT" && this.current_dir !== "LEFT") {
             this.set_speed(this.default_speed, 0);
-        } else if (dir === "LEFT") {
+        } else if (dir === "LEFT" && this.current_dir !== "RIGHT") {
             this.set_speed(-this.default_speed, 0);
+        } else {
+            return;
         }
         this.current_dir = dir;
         this.is_moving = true;
