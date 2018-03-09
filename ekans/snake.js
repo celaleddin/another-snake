@@ -66,6 +66,10 @@ var snake = {
         }
     },
 
+    get_head: function () {
+        return [this.body[0].x, this.body[0].y];
+    },
+
     update: function() {
         // update body
         for (let i = this.body.length-1; i > 0; i--) {

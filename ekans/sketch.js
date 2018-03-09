@@ -6,17 +6,26 @@ function setup() {
     var canvas = createCanvas(width, height).parent('main-canvas');
     frameRate(10);
     snake.initialise(width, height);
+    food.initialise(width, height, snake.size);
 }
 
 
 function draw() {
     background("#32CD32");
     operate_key_press();
+
     if (snake.is_moving) {
         snake.update();
     }
-    snake.show();
     snake.is_dead();
+
+    snake.show();
+    food.show();
+
+    if (food.is_eaten(snake.get_head())) {
+        snake.grow();
+        food.feed_new();
+    }
 }
 
 
