@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
-    <style> body {padding: 0; margin: 0;} </style>
-    <script src="../p5.min.js"></script>
-    <script src="snake.js"></script>
-    <script src="food.js"></script>
-    <script src="sketch.js"></script>
+    <head>
+        <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+        <style>
+         html, body {
+             padding: 0;
+             margin: 0;
+             height: 100%;
+             width: 100%;
+         }
+         .content {
+             display: flex;
+             height: 100%;
+             width: 100%;
+             align-items: center;
+             justify-content: center;
+         }
+        </style>
+        <script src="../p5.min.js"></script>
+        <script src="utils.js"></script>
+        <script src="snake.js"></script>
+        <script src="food.js"></script>
+        <script src="sketch.js"></script>
+    </head>
 
-    <style>
-      #main-canvas {
-        margin-top: 10px;
-        margin-left: 100px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="main-canvas"></div>
-  </body>
+    <body>
+        <div id="ekans" class="content">
+        </div>
+    </body>
+
 </html>
