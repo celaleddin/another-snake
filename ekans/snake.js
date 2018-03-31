@@ -14,15 +14,15 @@ var snake = {
 
     default_speed: undefined,
     current_dir: undefined,
-    is_moving: false,
+    _is_moving: false,
 
     initialise: function(width, height) {
         rect(this.body[0].x, this.body[0].y, this.size, this.size);
         for (let i = 0; i < this.initial_length; i++) {
             this.body.push({x: 0, y: 0});
         }
-        this.screen_width = width;
-        this.screen_height = height;
+        this.screen_width = roundScreenParameter(width, this.size);
+        this.screen_height = roundScreenParameter(height, this.size);
         this.default_speed = this.size;
     },
 
@@ -39,7 +39,7 @@ var snake = {
             return;
         }
         this.current_dir = dir;
-        this.is_moving = true;
+        this._is_moving = true;
     },
 
     set_speed: function(x, y) {
@@ -59,11 +59,11 @@ var snake = {
         let head = this.body[0];
         for (let i = 1; i < this.body.length; i++) {
             let part = this.body[i];
-            if (this.is_moving && head.x === part.x && head.y === part.y) {
-                this.is_moving = false;
-                alert("Game Over");
+            if (this._is_moving && head.x === part.x && head.y === part.y) {
+                this._is_moving = false;
+                return true;
             }
-        }
+        } return false;
     },
 
     get_head: function () {

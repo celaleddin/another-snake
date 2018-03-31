@@ -2,8 +2,8 @@ var keys_pressed = [];
 
 
 function setup() {
-    var height = 600, width = 1200;
-    var canvas = createCanvas(width, height).parent('main-canvas');
+    var height = window.innerHeight, width = window.innerWidth;
+    var canvas = createCanvas(width, height).parent('ekans');
     frameRate(10);
     snake.initialise(width, height);
     food.initialise(width, height, snake.size);
@@ -11,16 +11,17 @@ function setup() {
 
 
 function draw() {
-    background("#32CD32");
-    operate_key_press();
+    if (snake.is_dead()) {
+        alert("Game Over!\n\nYour score: " + food.count +
+              "\n\nRefresh the page to replay the game.");
+    } else {
+        background("#32CD32");
+        operate_key_press();
 
-    if (snake.is_moving) {
         snake.update();
+        food.show();
+        snake.show();
     }
-    snake.is_dead();
-
-    snake.show();
-    food.show();
 
     if (food.is_eaten(snake.get_head())) {
         snake.grow();
